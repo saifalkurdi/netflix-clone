@@ -3,6 +3,7 @@ import MovieCard from "./Movie";
 import { Row } from "react-bootstrap";
 import axios from "axios";
 import ModalMovie from "./ModalMovie";
+import MovieList from "./MovieList";
 
 export default function Home() {
 
@@ -15,13 +16,14 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_RESULTS_API}?limit=10`);
-      console.log(res.data.results);
-      setResults(res.data.results);
+      const res = await axios.get(`${process.env.REACT_APP_RESULTS_API}/trending`);
+      console.log(res);
+      setResults(res.data.movie);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
+
 
   useEffect(() => {
     fetchData();
@@ -29,15 +31,22 @@ export default function Home() {
 
   return (
     <div>
-      <button onClick={fetchData}>Get Data</button>
       <Row>
-        {results.length &&
-         results.map((item) =>
-          <MovieCard result={item} handleShow={handleShow} 
-          setSingleResult={setSingleResult}/>)}
+        <MovieList
+          movies={results}
+          setSingleResult={setSingleResult}
+          handleShow={handleShow}
+        />
       </Row>
-      <ModalMovie show={show} handleClose={handleClose}
-      singleResult={singleResult}/>
+      <ModalMovie
+        show={show}
+        handleClose={handleClose}
+        singleResult={singleResult}
+      />
     </div>
   );
 }
+
+
+
+
