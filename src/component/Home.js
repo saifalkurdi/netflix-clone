@@ -6,10 +6,9 @@ import ModalMovie from "./ModalMovie";
 import MovieList from "./MovieList";
 
 export default function Home() {
-
   const [results, setResults] = useState([]);
   const [show, setShow] = useState(false);
-  const [singleResult, setSingleResult] = useState({})
+  const [singleResult, setSingleResult] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,10 +23,9 @@ export default function Home() {
     }
   };
 
-
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -46,7 +44,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-

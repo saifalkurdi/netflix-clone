@@ -16,4 +16,3 @@ export default function MovieList({ movies, handleShow, setSingleResult }) {
     </Row>
   );
 }
-
