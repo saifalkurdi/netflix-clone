@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "./Movie";
 import { Row } from "react-bootstrap";
 import axios from "axios";
 import ModalMovie from "./ModalMovie";
 import MovieList from "./MovieList";
+import Header from "./Header";
+
+
 
 export default function Home() {
   const [results, setResults] = useState([]);
@@ -29,6 +31,7 @@ export default function Home() {
 
   return (
     <div>
+    <Header/>
       <Row>
         <MovieList
           movies={results}
